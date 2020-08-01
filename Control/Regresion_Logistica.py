@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from sklearn import metrics
 
+
 logistic = KNeighborsClassifier()
 
 # =================================================================================================
@@ -14,6 +15,17 @@ logistic = KNeighborsClassifier()
 # =================================================================================================
 X_iris = np.array(data.iris['data'])
 y_iris = np.array(data.iris['target'])
+
+
+
+labels_I=[]
+for i in y_iris:
+    if i==0:
+        labels_I.append('setosa')
+    if i==1:
+        labels_I.append('versicolor')
+    if i==2:
+        labels_I.append('virginica')
 
 X_train_iris, X_test_iris, y_train_iris, y_test_iris = train_test_split(X_iris, y_iris, test_size=0.4, random_state=12)
 
@@ -31,11 +43,24 @@ b = np.asarray(m)
 salida = np.sum(m, axis=1)
 sum1 = m.sum(axis=0)
 totalErrores_iris = sum(sum1) - np.trace(b)
+
+Training_I = X_train_iris.shape[0]
+Test_I = X_test_iris.shape[0]
+
 # =================================================================================================
 #   Wine
 # =================================================================================================
 X_wine = np.array(data.wine['data'])
 y_wine = np.array(data.wine['target'])
+
+labels_W=[]
+for i in y_iris:
+    if i==0:
+        labels_W.append('class_0')
+    if i==1:
+        labels_W.append('class_1')
+    if i==2:
+        labels_W.append('class_2')
 
 X_train_wine, X_test_wine, y_train_wine, y_test_wine = train_test_split(X_wine, y_wine, test_size=0.4, random_state=12)
 
@@ -53,3 +78,6 @@ b = np.asarray(m)
 salida = np.sum(m, axis=1)
 sum1 = m.sum(axis=0)
 totalErrores_wine = sum(sum1) - np.trace(b)
+
+Training_W = X_train_wine.shape[0]
+Test_W = X_test_wine.shape[0]

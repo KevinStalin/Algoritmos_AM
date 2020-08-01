@@ -10,13 +10,30 @@ from sklearn import datasets
 
 iris = datasets.load_iris();
 wine = datasets.load_wine();
+nombres_iris = iris['target_names']
+nombres_wine = wine['target_names']
+
 classifiern = GaussianNB()
 
 # =================================================================================================
 #   IRIS
 # =================================================================================================
+# print(iris)
 X_iris = np.array(iris['data'])
 y_iris = np.array(iris['target'])
+# for i in X_iris[:5]:
+#     print(i)
+#
+# for i in range(len(X_iris[:5])):
+#     print(X_iris[i][0], X_iris[i][1], X_iris[i][2], X_iris[i][3])
+labels_I=[]
+for i in y_iris:
+    if i==0:
+        labels_I.append('setosa')
+    if i==1:
+        labels_I.append('versicolor')
+    if i==2:
+        labels_I.append('virginica')
 
 X_train_iris, X_test_iris, y_train_iris, y_test_iris = train_test_split(X_iris, y_iris, test_size=0.4, random_state=12)
 
@@ -31,18 +48,29 @@ F1_iris = metrics.f1_score(y_test_iris, iris_predic, average=None)
 
 m = np.array(M_confusion_iris)
 b = np.asarray(m)
-salida = np.sum(m, axis=1)
+# salida = np.sum(m, axis=1)
 sum1 = m.sum(axis=0)
 totalErrores_iris = sum(sum1) - np.trace(b)
 
-Training = X_train_iris.shape[0]
-Test = X_test_iris.shape[0]
+Training_I = X_train_iris.shape[0]
+Test_I = X_test_iris.shape[0]
+
 # =================================================================================================
 #   Wine
 # =================================================================================================
 X_wine = np.array(wine['data'])
 y_wine = np.array(wine['target'])
 
+labels_W=[]
+for i in y_wine:
+    if i==0:
+        labels_W.append('class_0')
+    if i==1:
+        labels_W.append('class_1')
+    if i==2:
+        labels_W.append('class_2')
+
+# print(labels_W)
 X_train_wine, X_test_wine, y_train_wine, y_test_wine = train_test_split(X_wine, y_wine, test_size=0.4, random_state=12)
 
 classifiern.fit(X_train_wine, y_train_wine)
@@ -56,6 +84,9 @@ F1_wine = metrics.f1_score(y_test_wine, wine_predic, average=None)
 
 m = np.array(M_confusion_wine)
 b = np.asarray(m)
-salida = np.sum(m, axis=1)
+# salida = np.sum(m, axis=1)
 sum1 = m.sum(axis=0)
 totalErrores_wine = sum(sum1) - np.trace(b)
+
+Training_W = X_train_wine.shape[0]
+Test_W = X_test_wine.shape[0]
