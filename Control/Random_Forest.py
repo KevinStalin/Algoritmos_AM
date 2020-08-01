@@ -16,35 +16,57 @@ iris = datasets.load_iris()
 print("--------------- Random Forest con Iris Data Set ---------------")
 print("--------------- Clases Iris ---------------")
 # print the label
+clases_iris = iris.target_names
 print(iris.target_names)
 
 print("--------------- Caracterisiticas Iris ---------------")
 # print the names of the features
+features_iris = iris.feature_names
 print(iris.feature_names)
 
 # Creando un DataFrame.
 import pandas as pd
 
 data = pd.DataFrame({
-'sepal length': iris.data[:, 0],
-'sepal width': iris.data[:, 1],
-'petal length': iris.data[:, 2],
-'petal width': iris.data[:, 3],
-'species': iris.target
+    'sepal length': iris.data[:, 0],
+    'sepal width': iris.data[:, 1],
+    'petal length': iris.data[:, 2],
+    'petal width': iris.data[:, 3],
+    'species': iris.target
 })
-data.head()
+cabezera_iris = data.head()
+print('Cabezera Iris: \n', cabezera_iris)
 
 from sklearn.model_selection import train_test_split
 
 # VARIABLES DEPENDIENTES
-X = data[['sepal length', 'sepal width', 'petal length', 'petal width']] # Features
+X = data[['sepal length', 'sepal width', 'petal length', 'petal width']]  # Features
 
 # VARIABLES INDEPENDIENTES
-y = data['species'] # Labels
+y = data['species']  # Labels
+
+nombres_iris = iris['target_names']
+
+labels_Iris = []
+for i in y:
+    if i == 0:
+        labels_Iris.append('setosa')
+    if i == 1:
+        labels_Iris.append('versicolor')
+    if i == 2:
+        labels_Iris.append('virginica')
 
 # Dividir Entranamiento y Prueba
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=12) # 70% training and 30% test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=12)  # 70% training and 30% test
 print('Son {} datos para entrenamiento y {} datos para prueba'.format(X_train.shape[0], X_test.shape[0]))
+
+# Datos para Training
+train_iris = X_train.shape[0]
+print('Train Iris: ', train_iris)
+
+# Datos para Test
+test_iris = X_test.shape[0]
+print('Test Iris: ', test_iris)
 
 # Entrenamiento Iris
 X_train_iris = X_train
@@ -81,30 +103,6 @@ print("Recall: ", recall)
 print("F1: ", f1)
 print()
 
-from sklearn.metrics import mean_squared_error, r2_score
-import statsmodels.api as sm
-
-# Por último, calculamos el error cuadrático medio y el estadístico R^2
-print (u'Error cuadrático medio: %.2f' % mean_squared_error(y_test, y_pred))
-print (u'Estadístico R_2: %.2f' % r2_score(y_test, y_pred))
-from sklearn.metrics import mean_absolute_error
-print('MEAN : ',mean_absolute_error(y_test, y_pred))
-print('RMSE',mean_squared_error(y_test, y_pred, squared=False))
-print('MSE',mean_squared_error(y_test, y_pred, squared=True))
-print()
-print('################### R2 #############')
-r2=r2_score(y_test, y_pred)
-print(r2)
-print('################### R2a #############')
-r2a = 1 - (1-r2)*(len(y)-1)/(len(y)-X.shape[1]-1)
-print(r2a)
-print('################### R2 y Ra #############')
-X1 = sm.add_constant(X)
-result = sm.OLS(y, X1).fit()
-#print dir(result)
-print (result.rsquared, result.rsquared_adj)
-print()
-
 import numpy as np
 
 m = np.array(matrizConfusion)
@@ -129,49 +127,72 @@ from sklearn.datasets import load_wine
 
 ##DATA WINE
 wine = datasets.load_wine()
-df = pd.DataFrame(wine['data'])
+# df = pd.DataFrame(wine['data'])
 # print(wine)
 print("--------------- Random Forest con Wine Data Set ---------------")
 print("--------------- Clases Wine ---------------")
 # print the label
+clases_wine = wine.target_names
 print(wine.target_names)
 
 print("--------------- Caracteristicas Wine ---------------")
 # print the names of the features
+features_wine = wine.feature_names
 print(wine.feature_names)
 
 # Creando un DataFrame
 import pandas as pd
 
 data2 = pd.DataFrame({
-'alcohol': wine.data[:, 0],
-'malic_acid': wine.data[:, 1],
-'ash': wine.data[:, 2],
-'alcalinity_of_ash': wine.data[:, 3],
-'magnesium': wine.data[:, 4],
-'total_phenols': wine.data[:, 5],
-'flavanoids': wine.data[:, 6],
-'nonflavanoid_phenols': wine.data[:, 7],
-'proanthocyanins': wine.data[:, 8],
-'color_intensity': wine.data[:, 9],
-'hue': wine.data[:, 10],
-'od280/od315_of_diluted_wines': wine.data[:, 11],
-'proline': wine.data[:, 12],
-'target_names': wine.target
+    'alcohol': wine.data[:, 0],
+    'malic_acid': wine.data[:, 1],
+    'ash': wine.data[:, 2],
+    'alcalinity_of_ash': wine.data[:, 3],
+    'magnesium': wine.data[:, 4],
+    'total_phenols': wine.data[:, 5],
+    'flavanoids': wine.data[:, 6],
+    'nonflavanoid_phenols': wine.data[:, 7],
+    'proanthocyanins': wine.data[:, 8],
+    'color_intensity': wine.data[:, 9],
+    'hue': wine.data[:, 10],
+    'od280/od315_of_diluted_wines': wine.data[:, 11],
+    'proline': wine.data[:, 12],
+    'target_names': wine.target
 })
-data2.head()
+cabezera_wine = data2.head()
+print('Cabezera Wine: \n', cabezera_wine)
 
 # VARIABLES DEPENDIENTES
 X2 = data2[['alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'magnesium', 'total_phenols', 'flavanoids',
-'nonflavanoid_phenols', 'proanthocyanins', 'color_intensity', 'hue', 'od280/od315_of_diluted_wines',
-'proline']] # Features
+            'nonflavanoid_phenols', 'proanthocyanins', 'color_intensity', 'hue', 'od280/od315_of_diluted_wines',
+            'proline']]  # Features
 
 # VARIABLES INDEPENDIENTES
-y2 = data2['target_names'] # Labels
+y2 = data2['target_names']  # Labels
+
+nombres_wine = wine['target_names']
+
+labels_Wine = []
+for i in y2:
+    if i == 0:
+        labels_Wine.append('class_0')
+    if i == 1:
+        labels_Wine.append('class_1')
+    if i == 2:
+        labels_Wine.append('class_2')
 
 # Entrenamiento y Prueba
-X_train2, X_test2, y_train2, y_test2 = train_test_split(X2, y2, test_size=0.3, random_state=12) # 70% training and 30% test
+X_train2, X_test2, y_train2, y_test2 = train_test_split(X2, y2, test_size=0.3,
+                                                        random_state=12)  # 70% training and 30% test
 print('Son {} datos para entrenamiento y {} datos para prueba'.format(X_train2.shape[0], X_test2.shape[0]))
+
+# Datos para Training
+train_wine = X_train2.shape[0]
+print('Train Iris: ', train_wine)
+
+# Datos para Test
+test_wine = X_test2.shape[0]
+print('Test Iris: ', test_wine)
 
 # Entrenamiento Wine
 X_train_wine = X_train2
@@ -207,25 +228,6 @@ print("Recall: ", recall2)
 print("F1: ", f1_2)
 print()
 
-from sklearn.metrics import mean_squared_error, r2_score
-import statsmodels.api as sm
-
-# Por último, calculamos el error cuadrático medio y el estadístico R^2
-print (u'Error cuadrático medio: %.2f' % mean_squared_error(y_test2, y_pred2))
-print (u'Estadístico R_2: %.2f' % r2_score(y_test2, y_pred2))
-from sklearn.metrics import mean_absolute_error
-print('MEAN : ',mean_absolute_error(y_test2, y_pred2))
-print('RMSE',mean_squared_error(y_test2, y_pred2, squared=False))
-print('MSE',mean_squared_error(y_test2, y_pred2, squared=True))
-print()
-print('################### R2 #############')
-r22=r2_score(y_test2, y_pred2)
-print(r22)
-print('################### R2a #############')
-r2a2 = 1 - (1-r2)*(len(y)-1)/(len(y)-X2.shape[1]-1)
-print(r2a2)
-print()
-
 import numpy as np
 
 m2 = np.array(matrizConfusion2)
@@ -234,4 +236,4 @@ salida2 = np.sum(m2, axis=1)
 sum11 = m2.sum(axis=0)
 totalErrores_wine = sum(sum11) - np.trace(b2)
 print('Total Errores Wine: ', totalErrores_wine)
-print()
+print('\n***********************************************************')

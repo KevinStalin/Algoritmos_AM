@@ -9,6 +9,9 @@ from Control import Naive_Bayes as NB
 from Control import Regresion_Logistica as RL
 from Control import KNN as KNN
 from Control import Maquina_Soporte_Vectorial as MSV
+from Control import Random_Forest as RF
+from Control import Red_Neuronal as RN
+
 
 # from Control import Maquina_Soporte_Vectorial as MSV
 
@@ -19,6 +22,34 @@ app = Flask(__name__)
 @app.route("/")
 def raiz():
     return render_template('prueba.html',
+                           nombres_I=RF.features_iris,
+                           acurracy_I=RF.accuracy,
+                           precision_I=RF.precision,
+                           recall_I=RF.recall,
+                           F1_I=RF.f1,
+                           T_errores_I=RF.totalErrores_iris,
+                           nombres_W=RF.features_wine,
+                           acurracy_W=RF.accuracy2,
+                           precision_W=RF.precision2,
+                           recall_W=RF.recall2,
+                           F1_W=RF.f1_2,
+                           T_errores_W=RF.totalErrores_wine,
+                           training_I=RF.train_iris,
+                           test_I=RF.test_iris,
+                           training_W=RF.train_wine,
+                           test_W=RF.test_wine,
+                           data_I=RF.data,
+                           data_W=RF.data2,
+                           labels_I=RF.labels_Iris,
+                           labels_W=RF.labels_Wine)
+
+# def home():
+#     return render_template('prueba.html')
+
+
+@app.route('/ranfore')
+def primera():
+    return render_template('RandomForest.html',
                            nombres_I=KNN.nombres_iris,
                            acurracy_I=KNN.Acurracy_iris,
                            precision_I=KNN.Precision_iris,
@@ -40,14 +71,6 @@ def raiz():
                            labels_I=KNN.labels_I,
                            labels_W=KNN.labels_W)
 
-# def home():
-#     return render_template('prueba.html')
-
-
-@app.route('/ranfore')
-def primera():
-    return render_template('RandomForest.html')
-
 @app.route('/navyes')
 def segunda():
     return render_template('NaiveBayes.html',
@@ -57,18 +80,23 @@ def segunda():
                            recall_I=NB.Recall_iris,
                            F1_I=NB.F1_iris,
                            T_errores_I=NB.totalErrores_iris,
+
                            nombres_W=NB.nombres_wine,
                            acurracy_W=NB.Acurracy_wine,
                            precision_W=NB.Precision_wine,
                            recall_W=NB.Recall_wine,
                            F1_W=NB.F1_wine,
                            T_errores_W=NB.totalErrores_wine,
+
                            training_I=NB.Training_I,
                            test_I=NB.Test_I,
+
                            training_W=NB.Training_W,
                            test_W=NB.Test_W,
+                           
                            data_I=NB.X_iris,
                            data_W=NB.X_wine,
+
                            labels_I=NB.labels_I,
                            labels_W=NB.labels_W)
 
@@ -97,10 +125,31 @@ def tercera():
                            labels_I=RL.labels_I,
                            labels_W=RL.labels_W)
 
-
 @app.route('/redneu')
 def cuarta():
-    return render_template('RedNeuronal.html')
+    return render_template('RedNeuronal.html',
+                           nombres_I=RN.nombres_iris,
+                           acurracy_I=RN.accuracyi,
+                           precision_I=RN.precisioni,
+                           recall_I=RN.recalli,
+                           F1_I=RN.f1i,
+                           T_errores_I=RN.totalErrores_iris,
+                           nombres_W=RN.nombres_wine,
+                           acurracy_W=RN.accuracyw,
+                           precision_W=RN.precisionw,
+                           recall_W=RN.recallw,
+                           F1_W=RN.f1w,
+                           T_errores_W=RN.totalErrores_wine,
+                           training_I=RN.Training_iris,
+                           test_I=RN.Test_iris,
+                           training_W=RN.Training_Wine,
+                           test_W=RN.Test_Wine,
+                           data_I=NB.X_iris,
+                           data_W=NB.X_wine,
+                           labels_I=RN.labels_I,
+                           labels_W=RN.labels_W)
+
+
 
 @app.route('/msv')
 def quinta():
