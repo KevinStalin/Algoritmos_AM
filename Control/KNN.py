@@ -8,6 +8,7 @@ from sklearn import datasets
 from sklearn import svm
 import pandas as pd
 import numpy as np
+from sklearn import metrics
 #Importando metricas para evaluacion
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
@@ -42,10 +43,17 @@ print(classification_report(y_test,Y_pred))
 print("MATRIZ DE CONFUSION")
 print(confusion_matrix(y_test,Y_pred))
 ##Precision
-print('accurancy de iris es: ', accuracy_score(Y_pred,y_test))
-print("********************************************************************")
-##/////////////////////////////data.wine////////////////////////////////////////////////////
-
+#print('accurancy de iris es: ', accuracy_score(Y_pred,y_test))
+#print("********************************************************************")
+print("\n")
+print("Accuracy:",metrics.accuracy_score(y_test,Y_pred))
+print("Precisión: ",metrics.precision_score(y_test,Y_pred, average=None))
+print("Recall: ",metrics.recall_score(y_test,Y_pred , average=None))
+print("F1: ",metrics.f1_score(y_test,Y_pred, average=None))
+print("**////////////////////////////////////////////////////////////////////////")
+##/////////////////////////////////////////////////////////////////////////////////
+##data.wine
+##/////////////////////////////////////////////////////////////////////////////////
 dfvin=pd.DataFrame(data.wine['data'])
 #iris = datasets.load_iris()
 #df=pd.DataFrame(iris['data'])
@@ -68,7 +76,14 @@ Y_predk = algoritmo.predict(X_testk)
 print('Precisión Máquinas de Vectores de Soporte (data de vinos): {}'.format(algoritmo.score(X_traink, y_traink)))
 ##MATRIZ
 print(classification_report(y_testk,Y_predk))
+
 print("MATRIZ DE CONFUSION")
 print(confusion_matrix(y_testk,Y_predk))
 ##Precision
-print('accurancy de vinos es: ', accuracy_score(Y_predk,y_testk))
+#print('accurancy de vinos es: ', accuracy_score(Y_predk,y_testk))
+print("\n")
+print("Accuracy:",metrics.accuracy_score(y_testk,Y_predk))
+print("Precisión: ",metrics.precision_score(y_testk,Y_predk, average=None))
+print("Recall: ",metrics.recall_score(y_testk,Y_predk , average=None))
+print("F1: ",metrics.f1_score(y_testk,Y_predk, average=None))
+
