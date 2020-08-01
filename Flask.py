@@ -3,20 +3,22 @@ from flask import make_response
 from flask import request, jsonify
 #----------------------------------------------------------------
 # import Regresion_Logistica as RL
-from Control import DATA as D
+# from Control import DATA as D
+
 from Control import Naive_Bayes as NB
-from Control import Regresion_Logistica as RL
-from Control import Maquina_Soporte_Vectorial as MSV
+# from Control import Regresion_Logistica as RL
+# from Control import Maquina_Soporte_Vectorial as MSV
 
 
 app = Flask(__name__)
 
 @app.route("/")
 def raiz():
-    return render_template('index.html',nombresIris=D.nombres_iris)
+    return render_template('indexx.html',nombresIris=NB.Acurracy_iris)
 
 # def home():
 #     return render_template('prueba.html')
+
 
 @app.route('/ranfore')
 def primera():
@@ -36,7 +38,7 @@ def segunda():
                            recall_W=NB.Recall_wine,
                            F1_W=NB.F1_wine,
                            T_errores_W=NB.totalErrores_wine)
-
+'''
 @app.route('/reglog')
 def tercera():
     return render_template('RegresionLLogistica.html',
@@ -68,6 +70,6 @@ def quinta():
                            recall_W=MSV.recallW,
                            F1_W=MSV.f1W,
                            T_errores_W=MSV.totalErrores_wine)
-
+'''
 if __name__== '__main__':
     app.run(debug=True)

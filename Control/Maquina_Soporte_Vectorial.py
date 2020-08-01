@@ -31,10 +31,12 @@ f1I=metrics.f1_score(y_testI, y_predI, average=None)
 
 m = np.array(matrixconfusionI)
 b = np.asarray(m)
-salida = np.sum(m, axis=1)
+# salida = np.sum(m, axis=1)
 sum1 = m.sum(axis=0)
 totalErrores_iris = sum(sum1) - np.trace(b)
 
+Training_I = X_trainI.shape[0]
+Test_I = X_testI.shape[0]
 '''
 print('Precisión Máquinas de Vectores de Soporte: {}'.format(prescoreI))
 
@@ -74,8 +76,12 @@ f1W=metrics.f1_score(y_testw, y_predW, average=None)
 m = np.array(matrixconfusionW)
 b = np.asarray(m)
 salida = np.sum(m, axis=1)
-sum1 = m.sum(axis=0)
+# sum1 = m.sum(axis=0)
 totalErrores_wine = sum(sum1) - np.trace(b)
+
+Training_W = X_trainw.shape[0]
+Test_W = X_testw.shape[0]
+
 '''
 print("Matriz de Confusion: \n",matrixconfusionW)
 print("Precisión: \n",precisionW)
