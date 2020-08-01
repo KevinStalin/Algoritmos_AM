@@ -29,6 +29,13 @@ accuracyI=metrics.accuracy_score(y_testI, y_predI)
 recallI=metrics.recall_score(y_testI, y_predI , average=None)
 f1I=metrics.f1_score(y_testI, y_predI, average=None)
 
+m = np.array(matrixconfusionI)
+b = np.asarray(m)
+salida = np.sum(m, axis=1)
+sum1 = m.sum(axis=0)
+totalErrores_iris = sum(sum1) - np.trace(b)
+
+'''
 print('Precisión Máquinas de Vectores de Soporte: {}'.format(prescoreI))
 
 print("Medidas de rendimiento ")
@@ -37,6 +44,7 @@ print("Precisión: \n",precisionI)
 print("Accuracy:\n",accuracyI)
 print("Recall: \n",recallI)
 print("F1: \n",f1I)
+'''
 ###########
 
 ##DATA WINE
@@ -62,12 +70,16 @@ precisionW=metrics.precision_score(y_testw, y_predW, average=None)
 accuracyW=metrics.accuracy_score(y_testw, y_predW)
 recallW=metrics.recall_score(y_testw, y_predW , average=None)
 f1W=metrics.f1_score(y_testw, y_predW, average=None)
+
+m = np.array(matrixconfusionW)
+b = np.asarray(m)
+salida = np.sum(m, axis=1)
+sum1 = m.sum(axis=0)
+totalErrores_wine = sum(sum1) - np.trace(b)
+'''
 print("Matriz de Confusion: \n",matrixconfusionW)
 print("Precisión: \n",precisionW)
 print("Accuracy:\n",accuracyW)
 print("Recall: \n",recallW)
 print("F1: \n",f1W)
-
-'''
-
 '''

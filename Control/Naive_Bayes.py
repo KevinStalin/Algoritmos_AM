@@ -25,6 +25,11 @@ Precision_iris = metrics.precision_score(y_test_iris, iris_predic, average=None)
 Recall_iris = metrics.recall_score(y_test_iris, iris_predic, average=None)
 F1_iris = metrics.f1_score(y_test_iris, iris_predic, average=None)
 
+m = np.array(M_confusion_iris)
+b = np.asarray(m)
+salida = np.sum(m, axis=1)
+sum1 = m.sum(axis=0)
+totalErrores_iris = sum(sum1) - np.trace(b)
 # =================================================================================================
 #   Wine
 # =================================================================================================
@@ -41,3 +46,9 @@ Acurracy_wine = metrics.accuracy_score(y_test_wine, wine_predic)
 Precision_wine = metrics.precision_score(y_test_wine, wine_predic, average=None)
 Recall_wine = metrics.recall_score(y_test_wine, wine_predic, average=None)
 F1_wine = metrics.f1_score(y_test_wine, wine_predic, average=None)
+
+m = np.array(M_confusion_wine)
+b = np.asarray(m)
+salida = np.sum(m, axis=1)
+sum1 = m.sum(axis=0)
+totalErrores_wine = sum(sum1) - np.trace(b)
