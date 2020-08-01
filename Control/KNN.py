@@ -87,3 +87,6 @@ print("Precisión: ",metrics.precision_score(y_testk,Y_predk, average=None))
 print("Recall: ",metrics.recall_score(y_testk,Y_predk , average=None))
 print("F1: ",metrics.f1_score(y_testk,Y_predk, average=None))
 
+'''
+
+'''

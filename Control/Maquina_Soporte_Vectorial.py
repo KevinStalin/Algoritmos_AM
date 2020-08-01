@@ -67,3 +67,7 @@ print("Precisión: \n",precisionW)
 print("Accuracy:\n",accuracyW)
 print("Recall: \n",recallW)
 print("F1: \n",f1W)
+
+'''
+
+'''
