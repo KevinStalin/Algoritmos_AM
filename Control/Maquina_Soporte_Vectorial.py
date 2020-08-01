@@ -15,4 +15,4 @@ algoritmo = SVC()
 algoritmo.fit(X_train, y_train)
 Y_pred = algoritmo.predict(X_test)
 print('Precisión Máquinas de Vectores de Soporte: {}'.format(algoritmo.score(X_train, y_train)))
-#######
+###########
