@@ -23,8 +23,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn import datasets
 
 iris=datasets.load_iris()
-Xi = iris.data[:, :]
-  # we only take the first two features.
+Xi = iris.data[:, :]  # we only take the first two features.
 yi = iris.target
 
 nombres_iris = iris['target_names']
@@ -37,6 +36,16 @@ for i in yi:
         labels_I.append('versicolor')
     if i==2:
         labels_I.append('virginica')
+
+data = pd.DataFrame({
+'sepal length': iris.data[:, 0],
+'sepal width': iris.data[:, 1],
+'petal length': iris.data[:, 2],
+'petal width': iris.data[:, 3],
+'species': iris.target
+})
+data_iris = np.array(data)
+# print(data)
 
 ##########APLICACIÓN DE ALGORITMOS DE MACHINE LEARNING##########
 #Separo la columna con la información de los sobrevivientes
@@ -66,12 +75,12 @@ accuracyi=metrics.accuracy_score(y_testi, y_predi)
 recalli=metrics.recall_score(y_testi, y_predi , average=None)
 f1i=metrics.f1_score(y_testi, y_predi, average=None)
 
-print("Medidas de rendimiento ")
-print("Matriz de Confusion: \n",matrixconfusioni)
-print("Precisión: \n",precisioni)
-print("Accuracy:\n",accuracyi)
-print("Recall: \n",recalli)
-print("F1: \n",f1i)
+# print("Medidas de rendimiento ")
+# print("Matriz de Confusion: \n",matrixconfusioni)
+# print("Precisión: \n",precisioni)
+# print("Accuracy:\n",accuracyi)
+# print("Recall: \n",recalli)
+# print("F1: \n",f1i)
 
 
 miris = np.array(matrixconfusioni)
@@ -86,8 +95,7 @@ totalErrores_iris = sum(sumiris) - np.trace(biris)
 
 # import some data to play with
 wine=datasets.load_wine()
-Xw = wine.data[:, :]
-  # we only take the first two features.
+Xw = wine.data[:, :]  # we only take the first two features.
 yw = wine.target
 
 nombres_wine = wine['target_names']
@@ -100,6 +108,29 @@ for i in yw:
         labels_W.append('class_1')
     if i==2:
         labels_W.append('class_2')
+
+
+
+
+
+data2 = pd.DataFrame({
+'alcohol': wine.data[:, 0],
+'malic_acid': wine.data[:, 1],
+'ash': wine.data[:, 2],
+'alcalinity_of_ash': wine.data[:, 3],
+'magnesium': wine.data[:, 4],
+'total_phenols': wine.data[:, 5],
+'flavanoids': wine.data[:, 6],
+'nonflavanoid_phenols': wine.data[:, 7],
+'proanthocyanins': wine.data[:, 8],
+'color_intensity': wine.data[:, 9],
+'hue': wine.data[:, 10],
+'od280/od315_of_diluted_wines': wine.data[:, 11],
+'proline': wine.data[:, 12],
+'target_names': wine.target
+})
+data_wine = np.array(data2)
+# print(data2)
 
 
 ##########APLICACIÓN DE ALGORITMOS DE MACHINE LEARNING##########
@@ -128,11 +159,11 @@ precisionw=metrics.precision_score(y_testw, y_predw, average=None)
 accuracyw=metrics.accuracy_score(y_testw, y_predw)
 recallw=metrics.recall_score(y_testw, y_predw , average=None)
 f1w=metrics.f1_score(y_testw, y_predw, average=None)
-print("Matriz de Confusion: \n",matrixconfusionw)
-print("Precisión: \n",precisionw)
-print("Accuracy:\n",accuracyw)
-print("Recall: \n",recallw)
-print("F1: \n",f1w)
+# print("Matriz de Confusion: \n",matrixconfusionw)
+# print("Precisión: \n",precisionw)
+# print("Accuracy:\n",accuracyw)
+# print("Recall: \n",recallw)
+# print("F1: \n",f1w)
 
 
 mwine = np.array(matrixconfusionw)

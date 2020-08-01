@@ -67,8 +67,8 @@ def primera():
                            test_I=RF.test_iris,
                            training_W=RF.train_wine,
                            test_W=RF.test_wine,
-                           data_I=RF.data,
-                           data_W=RF.data2,
+                           data_I=KNN.X_iris,
+                           data_W=KNN.X_wine,
                            labels_I=RF.labels_Iris,
                            labels_W=RF.labels_Wine)
 
