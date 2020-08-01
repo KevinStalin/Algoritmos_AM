@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def raiz():
-    return render_template('indexx.html',nombresIris=NB.Acurracy_iris)
+    return render_template('prueba.html')
 
 # def home():
 #     return render_template('prueba.html')
@@ -34,18 +34,23 @@ def segunda():
                            recall_I=NB.Recall_iris,
                            F1_I=NB.F1_iris,
                            T_errores_I=NB.totalErrores_iris,
+
                            nombres_W=NB.nombres_wine,
                            acurracy_W=NB.Acurracy_wine,
                            precision_W=NB.Precision_wine,
                            recall_W=NB.Recall_wine,
                            F1_W=NB.F1_wine,
                            T_errores_W=NB.totalErrores_wine,
+
                            training_I=NB.Training_I,
                            test_I=NB.Test_I,
+
                            training_W=NB.Training_W,
                            test_W=NB.Test_W,
+                           
                            data_I=NB.X_iris,
                            data_W=NB.X_wine,
+
                            labels_I=NB.labels_I,
                            labels_W=NB.labels_W)
 '''
