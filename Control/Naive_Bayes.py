@@ -10,6 +10,7 @@ from sklearn import datasets
 
 iris = datasets.load_iris();
 wine = datasets.load_wine();
+# print(list(wine['data']))
 nombres_iris = iris['target_names']
 nombres_wine = wine['target_names']
 
@@ -18,14 +19,9 @@ classifiern = GaussianNB()
 # =================================================================================================
 #   IRIS
 # =================================================================================================
-# print(iris)
 X_iris = np.array(iris['data'])
 y_iris = np.array(iris['target'])
-# for i in X_iris[:5]:
-#     print(i)
-#
-# for i in range(len(X_iris[:5])):
-#     print(X_iris[i][0], X_iris[i][1], X_iris[i][2], X_iris[i][3])
+
 labels_I=[]
 for i in y_iris:
     if i==0:

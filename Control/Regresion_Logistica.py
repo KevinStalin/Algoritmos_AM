@@ -21,8 +21,6 @@ logistic = KNeighborsClassifier()
 X_iris = np.array(iris['data'])
 y_iris = np.array(iris['target'])
 
-
-
 labels_I=[]
 for i in y_iris:
     if i==0:
