@@ -5,7 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import datasets
 from sklearn import svm
-import pandas as pd
+# import pandas as pd
 import numpy as np
 from sklearn import metrics
 # Importando metricas para evaluacion

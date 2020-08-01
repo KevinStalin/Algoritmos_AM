@@ -22,34 +22,6 @@ app = Flask(__name__)
 @app.route("/")
 def raiz():
     return render_template('prueba.html',
-                           nombres_I=RF.features_iris,
-                           acurracy_I=RF.accuracy,
-                           precision_I=RF.precision,
-                           recall_I=RF.recall,
-                           F1_I=RF.f1,
-                           T_errores_I=RF.totalErrores_iris,
-                           nombres_W=RF.features_wine,
-                           acurracy_W=RF.accuracy2,
-                           precision_W=RF.precision2,
-                           recall_W=RF.recall2,
-                           F1_W=RF.f1_2,
-                           T_errores_W=RF.totalErrores_wine,
-                           training_I=RF.train_iris,
-                           test_I=RF.test_iris,
-                           training_W=RF.train_wine,
-                           test_W=RF.test_wine,
-                           data_I=RF.data,
-                           data_W=RF.data2,
-                           labels_I=RF.labels_Iris,
-                           labels_W=RF.labels_Wine)
-
-# def home():
-#     return render_template('prueba.html')
-
-
-@app.route('/ranfore')
-def primera():
-    return render_template('RandomForest.html',
                            nombres_I=KNN.nombres_iris,
                            acurracy_I=KNN.Acurracy_iris,
                            precision_I=KNN.Precision_iris,
@@ -70,6 +42,35 @@ def primera():
                            data_W=KNN.X_wine,
                            labels_I=KNN.labels_I,
                            labels_W=KNN.labels_W)
+
+
+# def home():
+#     return render_template('prueba.html')
+
+
+@app.route('/ranfore')
+def primera():
+    return render_template('RandomForest.html',
+                           nombres_I=RF.features_iris,
+                           acurracy_I=RF.accuracy,
+                           precision_I=RF.precision,
+                           recall_I=RF.recall,
+                           F1_I=RF.f1,
+                           T_errores_I=RF.totalErrores_iris,
+                           nombres_W=RF.features_wine,
+                           acurracy_W=RF.accuracy2,
+                           precision_W=RF.precision2,
+                           recall_W=RF.recall2,
+                           F1_W=RF.f1_2,
+                           T_errores_W=RF.totalErrores_wine,
+                           training_I=RF.train_iris,
+                           test_I=RF.test_iris,
+                           training_W=RF.train_wine,
+                           test_W=RF.test_wine,
+                           data_I=RF.data,
+                           data_W=RF.data2,
+                           labels_I=RF.labels_Iris,
+                           labels_W=RF.labels_Wine)
 
 @app.route('/navyes')
 def segunda():
