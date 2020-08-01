@@ -1,4 +1,4 @@
-import DATA as data
+from sklearn import datasets
 import numpy
 from pandas import read_csv
 import pandas as pd
@@ -19,9 +19,12 @@ import matplotlib.pyplot as plt
 ##########IMPORTANDO LA DATA##########
 import pandas
 from sklearn.metrics import confusion_matrix
+iris = datasets.load_iris();
+wine = datasets.load_wine();
 
+nombres_iris = iris['target_names']
+nombres_wine = wine['target_names']
 
-iris=data.iris
 Xi = iris.data[:, :]  # we only take the first two features.
 yi = iris.target
 
@@ -60,7 +63,6 @@ print("F1: \n",f1i)
 ###########
 
 # import some data to play with
-wine=data.wine
 Xw = wine.data[:, :]  # we only take the first two features.
 yw = wine.target
 

@@ -1,4 +1,4 @@
-import DATA as data
+from sklearn import datasets
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
@@ -7,14 +7,19 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from sklearn import metrics
 
+iris = datasets.load_iris();
+wine = datasets.load_wine();
+
+nombres_iris = iris['target_names']
+nombres_wine = wine['target_names']
 
 logistic = KNeighborsClassifier()
 
 # =================================================================================================
 #   IRIS
 # =================================================================================================
-X_iris = np.array(data.iris['data'])
-y_iris = np.array(data.iris['target'])
+X_iris = np.array(iris['data'])
+y_iris = np.array(iris['target'])
 
 
 
@@ -50,8 +55,8 @@ Test_I = X_test_iris.shape[0]
 # =================================================================================================
 #   Wine
 # =================================================================================================
-X_wine = np.array(data.wine['data'])
-y_wine = np.array(data.wine['target'])
+X_wine = np.array(wine['data'])
+y_wine = np.array(wine['target'])
 
 labels_W=[]
 for i in y_iris:
