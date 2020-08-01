@@ -44,6 +44,8 @@ def raiz():
                            labels_W=KNN.labels_W)
 
 
+
+
 # def home():
 #     return render_template('prueba.html')
 
@@ -71,6 +73,8 @@ def primera():
                            data_W=KNN.X_wine,
                            labels_I=RF.labels_Iris,
                            labels_W=RF.labels_Wine)
+
+
 
 @app.route('/navyes')
 def segunda():
@@ -100,6 +104,7 @@ def segunda():
 
                            labels_I=NB.labels_I,
                            labels_W=NB.labels_W)
+                            
 
 
 @app.route('/reglog')
@@ -125,6 +130,7 @@ def tercera():
                            data_W=RL.X_wine,
                            labels_I=RL.labels_I,
                            labels_W=RL.labels_W)
+                         
 
 @app.route('/redneu')
 def cuarta():
@@ -149,6 +155,7 @@ def cuarta():
                            data_W=NB.X_wine,
                            labels_I=RN.labels_I,
                            labels_W=RN.labels_W)
+                          
 
 
 
@@ -175,6 +182,59 @@ def quinta():
                            data_W=MSV.X_wine,
                            labels_I=MSV.labels_I,
                            labels_W=MSV.labels_W)
+                         
+@app.route('/bench')
+def sexta():
+    return render_template('benchmarking.html',
+
+                            acurracy_I=KNN.Acurracy_iris,
+                            T_errores_I=KNN.totalErrores_iris,
+                            test_I=KNN.Test_I,
+                            acurracy_W=KNN.Acurracy_wine,
+                            T_errores_W=KNN.totalErrores_wine,
+                            test_W=KNN.Test_W,
+            #//////////////////////////randon/////////////////////
+                            acurracy_I1=RF.accuracy,
+                            T_errores_I1=RF.totalErrores_iris,
+                            test_I1=RF.test_iris,
+                            acurracy_W1=RF.accuracy2,
+                            T_errores_W1=RF.totalErrores_wine,
+                            test_W1=RF.test_wine,     
+
+            #/////////////////////////////nedvayes//////////////////
+                            acurracy_I2=NB.Acurracy_iris,
+                            T_errores_I2=NB.totalErrores_iris,
+                            test_I2=NB.Test_I,
+                            acurracy_W2=NB.Acurracy_wine,
+                            T_errores_W2=NB.totalErrores_wine,
+                            test_W2=NB.Test_W,
+            #///////////////////////////regresion lofistica////////////////////
+                            acurracy_I3=RL.Acurracy_iris,
+                            T_errores_I3=RL.totalErrores_iris,
+                            test_I3=RL.Test_I,
+                            acurracy_W3=RL.Acurracy_wine,
+                            T_errores_W3=RL.totalErrores_wine,
+                            test_W3=RL.Test_W,
+
+            #///////////////////////////red neuronal////////////////////
+                            acurracy_I4=RN.accuracyi,
+                            T_errores_I4=RN.totalErrores_iris,
+                            test_I4=RN.Test_iris,
+                            acurracy_W4=RN.accuracyw,
+                            T_errores_W4=RN.totalErrores_wine,
+                            test_W4=RN.Test_Wine,
+
+            #///////////////////////////soporte vectorial////////////////////
+                            acurracy_I5=MSV.Acurracy_iris,
+                            T_errores_I5=MSV.totalErrores_iris,
+                            test_I5=MSV.Test_I,
+                            acurracy_W5=MSV.Acurracy_wine,
+                            T_errores_W5=MSV.totalErrores_wine,
+                            test_W5=MSV.Test_W
+
+
+    )
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Red Neuronal</title>
+    <title>Naive Bayes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,13 +46,15 @@
                     <li><a href="reglog"><i class="icon-code"></i><span>Regresión Logística</span> </a></li>
                     <li><a href="redneu"><i class="icon-code"></i><span>Red Neuronal</span> </a></li>
                     <li><a href="msv"><i class="icon-code"></i><span>Máquina de Soporte Vectorial</span> </a></li>
-
+                    <li><a href="bench"><i class="icon-code"></i><span>Benchmarking</span> </a></li>
                 </ul>
             </div>
             <!-- /container -->
         </div>
         <!-- /subnavbar-inner -->
     </div>
+
+
     <div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
             <h3>TABLA IRIS</h3>
@@ -71,25 +73,54 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in range(10) %}
+                    <tr>
+                        <td>{{ data_I[i][0] }}</td>
+                        <td>{{ data_I[i][1] }}</td>
+                        <td>{{ data_I[i][2] }}</td>
+                        <td>{{ data_I[i][3] }}</td>
+                        <td>{{ labels_I[i] }}</td>
+
+                        {% endfor %}
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <br><br>
+    <div>
+        <center>
+            <h3>Datos para el training del data set de iris</h3>
+            {{ training_I }}
+            <h3>Datos para el test del data set de iris</h3>
+            {{ test_I }}
+        </center>
+    </div>
+
     <div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
-            <h3>METRICAS DE RENDIMIENTO</h3>
+            <h3>METRICAS DE RENDIMIENTO IRIS</h3>
         </div>
         <div class="widget-content">
             <table class="table table-striped table-bordered">
                 <thead>
-                    <tr>
+                    <tr><b>
                         <th> Presición</th>
                         <th> Recall</th>
                         <th> F1</th>
+                        <th> Clase</th>
+                    </b>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in range(3) %}
+                    <tr>
+                        <td>{{ precision_I[i] }}</td>
+                        <td>{{ recall_I[i] }}</td>
+                        <td>{{ F1_I[i] }}</td>
+                        <td>{{ nombres_I[i] }}</td>
+                        {% endfor %}
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -106,8 +137,16 @@
             <div class="widget-content">
                 <div class="widget big-stats-container">
                     <div class="widget-content">
-                        <h6 class="bigstats">cuanto es para el data </h6>
+                        <h6 class="bigstats">Valor acurracy de iris </h6>
                         <div id="big_stats" class="cf">
+                            <h3>{{ acurracy_I }}</h3>
+                        </div>
+                    </div>
+
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor de errores iris </h6>
+                        <div id="big_stats" class="cf">
+                            <h3>{{ T_errores_I }}</h3>
                         </div>
                     </div>
                 </div>
@@ -120,8 +159,7 @@
     <!-- vino -->
     <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <br><br><br><br>
-    <hr>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     <div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
@@ -132,32 +170,62 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Vino </th>
+
                         <th>Alcohol </th>
-                        <th>Acido malico </th>
-                        <th>Ceniza </th>
-                        <th>Acl </th>
-                        <th>Mg </th>
-                        <th>Fenoles </th>
+                        <th>Ácido málico </th>
+                        <th>Cenizas </th>
+                        <th>Alcalina de cenizas </th>
+                        <th>Magnesio </th>
+                        <th>Fenoles totales </th>
                         <th>Flavonoides </th>
                         <th>Fenoles no Flavonoides </th>
-                        <th>Proanth </th>
+                        <th>Proantocianinas </th>
                         <th>Intencidad del color </th>
-                        <th>Matiz </th>
-                        <th>Sobredosis </th>
+                        <th>Tono </th>
+                        <th>OD315 </th>
                         <th>Prolina </th>
+                        <th>Clase </th>
 
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in range(10) %}
+                    <tr>
+                        <td>{{ data_W[i][0] }}</td>
+                        <td>{{ data_W[i][1] }}</td>
+                        <td>{{ data_W[i][2] }}</td>
+                        <td>{{ data_W[i][3] }}</td>
+                        <td>{{ data_W[i][4] }}</td>
+                        <td>{{ data_W[i][5] }}</td>
+                        <td>{{ data_W[i][6] }}</td>
+                        <td>{{ data_W[i][7] }}</td>
+                        <td>{{ data_W[i][8] }}</td>
+                        <td>{{ data_W[i][9] }}</td>
+                        <td>{{ data_W[i][10] }}</td>
+                        <td>{{ data_W[i][11] }}</td>
+                        <td>{{ data_W[i][12] }}</td>
+                        <td>{{ labels_W[i] }}</td>
+
+                        {% endfor %}
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <br><br>
+
+    <div>
+        <center>
+            <h3>Datos para el training del data set del vino</h3>
+            {{ training_W }}
+            <h3>Datos para el test el data set del vino</h3>
+            {{ test_W }}
+        </center>
+    </div>
+
     <div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
-            <h3>METRICAS DE RENDIMIENTO</h3>
+            <h3>METRICAS DE RENDIMIENTO VINO</h3>
         </div>
         <div class="widget-content">
             <table class="table table-striped table-bordered">
@@ -166,9 +234,19 @@
                         <th> Presición</th>
                         <th> Recall</th>
                         <th> F1</th>
+                        <th> Clase</th>
+
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in range(3) %}
+                    <tr>
+                        <td>{{ precision_W[i] }}</td>
+                        <td>{{ recall_W[i] }}</td>
+                        <td>{{ F1_W[i] }}</td>
+                        <td>{{ nombres_W[i] }}</td>
+                        {% endfor %}
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -183,20 +261,34 @@
             <div class="widget-content">
                 <div class="widget big-stats-container">
                     <div class="widget-content">
-                        <h6 class="bigstats">cuanto es para el data </h6>
+                        <h6 class="bigstats">Valor acurracy de vino </h6>
                         <div id="big_stats" class="cf">
+                            <h3>{{ acurracy_W }}</h3>
                         </div>
                     </div>
+
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor de errores vino </h6>
+                        <div id="big_stats" class="cf">
+                            <h3>{{ T_errores_W }}</h3>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
     </div>
     <br><br><br><b><br><br><br><br><br>
+        <br><br><br><b><br><br><br><br><br>
         <div class="footer">
             <div class="footer-inner">
                 <div class="container">
                     <div class="row">
-                        <div class="span12"> &copy; 2020 <a href="#">Morales, Juma, Quisupangui, Ramirez, Velasco</a>.</div>
+                        <center>
+                        <div class="span12"> &copy; 2020 - APRENDIZAJE DE MÁQUINA - Morales, Juma, Quisupangui, Ramirez, Velasco</a>.</div>
+                    </center>
                         <!-- /span12 -->
                     </div>
                     <!-- /row -->
@@ -205,6 +297,7 @@
             </div>
             <!-- /footer-inner -->
         </div>
+
 </body>
 
 </html>

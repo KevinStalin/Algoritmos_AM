@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Naive Bayes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pages/dashboard.css" rel="stylesheet">
+    <link rel='stylesheet' href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel='stylesheet' href="{{url_for('static', filename='bootstrap-responsive.min.css')}}">
+    <link rel='stylesheet' href="{{url_for('static', filename='font-awesome.css')}}">
+    <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}">
+    <link rel='stylesheet' href="{{url_for('static', filename='pages/dashboard.css')}}">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Algoritmos </a>
+
+                <!--/.nav-collapse -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+    <div class="subnavbar">
+        <div class="subnavbar-inner">
+            <div class="container">
+                <ul class="mainnav">
+                    <li><a href="/"><i class="icon-code"></i><span>Knn</span> </a></li>
+                    <li><a href="ranfore"><i class="icon-code"></i><span>Random Forest</span> </a></li>
+                    <li><a href="navyes"><i class="icon-code"></i><span>Naive Bayes</span> </a></li>
+                    <li><a href="reglog"><i class="icon-code"></i><span>Regresión Logística</span> </a></li>
+                    <li><a href="redneu"><i class="icon-code"></i><span>Red Neuronal</span> </a></li>
+                    <li><a href="msv"><i class="icon-code"></i><span>Máquina de Soporte Vectorial</span> </a></li>
+                    <li><a href="bench"><i class="icon-code"></i><span>Benchmarking</span> </a></li>
+
+                </ul>
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /subnavbar-inner -->
+    </div>
+
+    <div class="span6">
+        <div class="widget widget-nopad">
+            <div class="widget-header"> <i class="icon-list-alt"></i>
+                <h3> Total de datos </h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+                <div class="widget big-stats-container">
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor acurracy de iris </h6>
+                        <div id="big_stats" class="cf">
+                            <h4>{{ acurracy_I }}</h4>
+                        </div>
+                    </div>
+
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor de errores iris </h6>
+                        <div id="big_stats" class="cf">
+                            <h4>{{ T_errores_I }}</h4>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor de test de iris </h6>
+                        <div id="big_stats" class="cf">
+                            <h4>{{ test_I }}</h4>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor acurracy de vino </h6>
+                        <div id="big_stats" class="cf">
+                            <h4>{{ acurracy_W }}</h4>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor de errores vino </h6>
+                        <div id="big_stats" class="cf">
+                            <h4>{{ T_errores_W }}</h4>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <h6 class="bigstats">Valor de test de vino </h6>
+                        <div id="big_stats" class="cf">
+                            <h4>{{ test_W }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+        google.load("visualization", "1", {
+            packages: ["corechart"]
+        });
+        google.setOnLoadCallback(dibujarGrafico);
+
+        function dibujarGrafico() {
+            // Tabla de datos: valores y etiquetas de la gráfica
+            var data = google.visualization.arrayToDataTable([
+                ['Texto', 'Valor numérico'],
+                ['Texto1', 20.21],
+                ['Texto2', 4.28],
+                ['Texto3', 17.26],
+                ['Texto4', 10.25]
+            ]);
+            var options = {
+                    title: 'Nuestro primer ejemplo con Google Charts'
+                }
+                // Dibujar el gráfico
+            new google.visualization.ColumnChart(
+                //ColumnChart sería el tipo de gráfico a dibujar
+                document.getElementById('GraficoGoogleChart-ejemplo-1')
+            ).draw(data, options);
+        }
+    </script>
+
+    <body>
+        Comenzando con Google Charts....
+        <div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
+        </div>
+
+        <br><br><br><b><br><br><br><br><br>
+        <br><br><br><b><br><br><br><br><br>
+            
+    <br><br><br><b><br><br><br><br><br>
+        <br><br><br><b><br><br><br><br><br>
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="row">
+                        <center>
+                        <div class="span12"> &copy; 2020 - APRENDIZAJE DE MÁQUINA - Morales, Juma, Quisupangui, Ramirez, Velasco</a>.</div>
+                    </center>
+                        <!-- /span12 -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /footer-inner -->
+        </div>
+
+</body>
+
+</html>
