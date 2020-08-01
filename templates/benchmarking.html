@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Naive Bayes</title>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -55,6 +61,106 @@
         <!-- /subnavbar-inner -->
     </div>
 
+
+
+    <div id="grafica"></div>
+    <script>
+        $(function($) {
+            $('#grafica').highcharts({
+                title: {
+                    text: 'Dotos del data set de iris'
+                },
+                xAxis: {
+                    categories: ['Knn test=60', 'Random Forest test=45', 'Naive Bayes test=60', 'Regresión Logística test=60', 'Red Neuronal test=45', 'MSV tets=45']
+                },
+                yAxis: {
+                    title: 'Porcentaje %',
+                    plotLines: [{
+                        value: 0,
+
+                        padding: 2,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    type: 'column',
+                    name: 'Acurracy',
+                    data: [0.98, 0.95, 0.96, 0.96, 0.97, 0.97]
+                }, {
+                    type: 'column',
+                    name: 'T_errores',
+                    data: [1, 2, 2, 2, 1, 1]
+                }],
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <br><br><br><br>
+
+    <div id="grafica2"></div>
+    <script>
+        $(function($) {
+            $('#grafica2').highcharts({
+                title: {
+                    text: 'Dotos del data set de vino'
+                },
+                xAxis: {
+                    categories: ['Knn test=72', 'Random Forest test=54', 'Naive Bayes test=72', 'Regresión Logística test=54', 'Red Neuronal test=45', 'MSV tets=36']
+                },
+                yAxis: {
+                    title: 'Porcentaje %',
+                    plotLines: [{
+                        value: 0,
+
+                        padding: 2,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    type: 'column',
+                    name: 'Acurracy',
+                    data: [0.65, 0.98, 0.97, 0.72, 0.92, 0.63]
+                }, {
+                    type: 'column',
+                    name: 'T_errores',
+                    data: [25, 1, 2, 20, 4, 13]
+                }],
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <br><br><br>
     <div class="span6">
         <div class="widget widget-nopad">
             <div class="widget-header"> <i class="icon-list-alt"></i>
@@ -64,40 +170,9 @@
             <div class="widget-content">
                 <div class="widget big-stats-container">
                     <div class="widget-content">
-                        <h6 class="bigstats">Valor acurracy de iris </h6>
-                        <div id="big_stats" class="cf">
-                            <h4>{{ acurracy_I }}</h4>
-                        </div>
-                    </div>
-
-                    <div class="widget-content">
-                        <h6 class="bigstats">Valor de errores iris </h6>
-                        <div id="big_stats" class="cf">
-                            <h4>{{ T_errores_I }}</h4>
-                        </div>
-                    </div>
-                    <div class="widget-content">
-                        <h6 class="bigstats">Valor de test de iris </h6>
-                        <div id="big_stats" class="cf">
-                            <h4>{{ test_I }}</h4>
-                        </div>
-                    </div>
-                    <div class="widget-content">
                         <h6 class="bigstats">Valor acurracy de vino </h6>
                         <div id="big_stats" class="cf">
-                            <h4>{{ acurracy_W }}</h4>
-                        </div>
-                    </div>
-                    <div class="widget-content">
-                        <h6 class="bigstats">Valor de errores vino </h6>
-                        <div id="big_stats" class="cf">
-                            <h4>{{ T_errores_W }}</h4>
-                        </div>
-                    </div>
-                    <div class="widget-content">
-                        <h6 class="bigstats">Valor de test de vino </h6>
-                        <div id="big_stats" class="cf">
-                            <h4>{{ test_W }}</h4>
+                            <h3>{{ acurracy_W }}</h3>
                         </div>
                     </div>
                 </div>
@@ -105,44 +180,10 @@
         </div>
     </div>
 
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script>
-        google.load("visualization", "1", {
-            packages: ["corechart"]
-        });
-        google.setOnLoadCallback(dibujarGrafico);
-
-        function dibujarGrafico() {
-            // Tabla de datos: valores y etiquetas de la gráfica
-            var data = google.visualization.arrayToDataTable([
-                ['Texto', 'Valor numérico'],
-                ['Texto1', 20.21],
-                ['Texto2', 4.28],
-                ['Texto3', 17.26],
-                ['Texto4', 10.25]
-            ]);
-            var options = {
-                    title: 'Nuestro primer ejemplo con Google Charts'
-                }
-                // Dibujar el gráfico
-            new google.visualization.ColumnChart(
-                //ColumnChart sería el tipo de gráfico a dibujar
-                document.getElementById('GraficoGoogleChart-ejemplo-1')
-            ).draw(data, options);
-        }
-    </script>
-
-    <body>
-        Comenzando con Google Charts....
-        <div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
-        </div>
-
-        <br><br><br><b><br><br><br><br><br>
-        <br><br><br><b><br><br><br><br><br>
-            
     <br><br><br><b><br><br><br><br><br>
-        <br><br><br><b><br><br><br><br><br>
+        <br><br>
+            
+    
         <div class="footer">
             <div class="footer-inner">
                 <div class="container">
